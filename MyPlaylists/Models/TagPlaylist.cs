@@ -4,20 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace MyPlaylists.Models
 {
-    
-    public class PlaylistSong
+    public class TagPlaylist
     {
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PlaylistSongId { get; set; }
+        public int Id { get; set; }
 
         public int PlaylistId { get; set; }
         public Playlist Playlist { get; set; }
 
-        public int SongId { get; set; }
-        public Song Song { get; set; }
+        public int TagId { get; set; }
+        public Tag Tag { get; set; }
     }
 }

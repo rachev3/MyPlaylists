@@ -48,8 +48,21 @@ namespace MyPlaylists.Menus
             }
             else if (button.Key == ConsoleKey.D1)
             {
-                CreateAccount a = new CreateAccount();
-                a.CreateAcc();
+                try
+                {
+                    CreateAccount a = new CreateAccount();
+                    a.CreateAcc();
+                }
+                catch(Exception ex)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    var message = ex.Message;
+                    CenterTextMethod.CenterText(message, 1, 1);
+                    Console.WriteLine(ex.Message);
+                    Thread.Sleep(2000);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
             }
             else if (button.Key == ConsoleKey.D2)
             {

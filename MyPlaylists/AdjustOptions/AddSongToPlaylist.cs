@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyPlaylists.Models;
+using MyPlaylists.AccountOptions;
 
 namespace MyPlaylists.AdjustOptions
 {
@@ -72,12 +73,10 @@ namespace MyPlaylists.AdjustOptions
             {
                 PlaylistSong playlistSong = new PlaylistSong();
                 playlistSong.PlaylistId = playlistId;
-
-                var test = db.Songs.FirstOrDefault(x => x.SongName == name);
+               
                 var songCheck = db.Songs.Where(song => song.SongName == name && song.Artist == artist && song.Genre == genre && song.Url == url).ToList();
                 if (songCheck.Count == 0)
                 {
-                    
                     playlistSong.Song = song;
                 }
                 else
@@ -87,6 +86,9 @@ namespace MyPlaylists.AdjustOptions
                 db.PlaylistsSongs.Add(playlistSong);
                 db.SaveChanges();
             }
+            AdjustPlaylist adjust = new AdjustPlaylist();
+            adjust.AdjustMenu(playlistId);
         }
+        
     }
 }

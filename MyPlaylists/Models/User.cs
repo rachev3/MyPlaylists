@@ -9,7 +9,7 @@ namespace MyPlaylists.Models
 {
     public class User
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }

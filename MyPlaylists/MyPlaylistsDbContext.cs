@@ -15,6 +15,8 @@ namespace MyPlaylists
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<Song> Songs { get; set; }
         public DbSet<PlaylistSong> PlaylistsSongs { get; set; }
+        public DbSet<Tag> Tags { get; set; } 
+        public DbSet<TagPlaylist> TagsPlaylists { get; set; }
         public string DbPath { get; }
         public MyPlaylistsDbContext()
         {
@@ -31,26 +33,47 @@ namespace MyPlaylists
                 .Entity<User>()
                 .HasMany(e => e.Playlists)
                 .WithOne(e => e.User);
+
             modelBuilder
                 .Entity<Playlist>()
                 .HasMany(e => e.PlaylistsSongs)
                 .WithOne(e => e.Playlist);
+
             modelBuilder
                 .Entity<Song>()
                 .HasMany(e => e.PlaylistsSongs)
                 .WithOne(e => e.Song);
-            modelBuilder.Entity<PlaylistSong>()
-            .HasKey(x => new { x.PlaylistId, x.SongId });
+            modelBuilder
 
-            modelBuilder.Entity<PlaylistSong>()
-                .HasOne(p => p.Playlist)
-                .WithMany(p => p.PlaylistsSongs)
-                .IsRequired();
+                .Entity<Tag>()
+                .HasMany(e => e.TagsPlaylists)
+                .WithOne(e => e.Tag);
 
-            modelBuilder.Entity<PlaylistSong>()
-                .HasOne(p => p.Song)
-                .WithMany(p => p.PlaylistsSongs)
-                .IsRequired();
+            //modelBuilder.Entity<PlaylistSong>()
+            //.HasKey(x => new { x.PlaylistId, x.SongId });
+
+            //modelBuilder.Entity<PlaylistSong>()
+            //    .HasOne(p => p.Playlist)
+            //    .WithMany(p => p.PlaylistsSongs)
+            //    .IsRequired();
+
+            //modelBuilder.Entity<PlaylistSong>()
+            //    .HasOne(p => p.Song)
+            //    .WithMany(p => p.PlaylistsSongs)
+            //    .IsRequired();
+
+            //modelBuilder.Entity<TagPlaylist>()
+            //.HasKey(x => new { x.TagId, x.PlaylistId });
+
+            //modelBuilder.Entity<TagPlaylist>()
+            //    .HasOne(p => p.Playlist)
+            //    .WithMany(p => p.TagPlaylists)
+            //   .IsRequired();
+
+            //modelBuilder.Entity<TagPlaylist>()
+            //    .HasOne(p => p.Tag)
+            //    .WithMany(p => p.TagsPlaylists)
+            //    .IsRequired();
         }
     }
 }

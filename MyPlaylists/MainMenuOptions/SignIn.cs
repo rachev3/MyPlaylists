@@ -43,13 +43,7 @@ namespace MyPlaylists.MainMenuOptions
                 }
                 else
                 {
-                    Console.Clear();
-                    string incorrect = "Incorrect username or password";
-                    CenterTextMethod.CenterText(incorrect, 1, 1);
-                    Console.WriteLine(incorrect);
-                    Thread.Sleep(2000);
-                    MainMenu menu = new MainMenu();
-                    menu.Menu();
+                    throw new Exception("Incorrect username or password");
                 }
             }
         }

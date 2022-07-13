@@ -68,6 +68,7 @@ namespace MyPlaylists.Menus
             string optionTwo = "2) Create PLaylist";
             string optionThree = "3) Adjust Playlist";
 
+
             var defaultColor = ConsoleColor.Gray;
             var selectedColor = ConsoleColor.Cyan;
 

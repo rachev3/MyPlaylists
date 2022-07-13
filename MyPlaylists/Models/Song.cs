@@ -13,7 +13,7 @@ namespace MyPlaylists.Models
         {
             this.PlaylistsSongs = new List<PlaylistSong>();
         }
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SongId { get; set; }
         public string SongName { get; set; }
         public string Genre { get; set; }

@@ -21,6 +21,20 @@ namespace MyPlaylists.MainMenuOptions
                 Console.WriteLine("Username:");
                 user.Username = Console.ReadLine();
 
+                var userCheck = db.Users.Where(u => u.Username == user.Username).ToList();
+                if (userCheck.Count != 0)
+                {
+                    throw new Exception("Username is already taken");
+                } 
+                else if (user.Username.Count() < 3)
+                {
+                    throw new Exception("Username must be at least 3 symbols");
+                }
+                else if (user.Username.Count() > 30)
+                {
+                    throw new Exception("Username cant be more than 30 symbols.");
+                }
+
                 Console.WriteLine("Password:");
                 user.Password = PasswordCover(0, 3, " ");
 
