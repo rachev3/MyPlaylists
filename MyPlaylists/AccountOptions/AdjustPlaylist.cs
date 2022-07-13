@@ -29,7 +29,7 @@ namespace MyPlaylists.AccountOptions
                 pressedKey = Console.ReadKey();
                 Console.ForegroundColor = ConsoleColor.Gray;
 
-                if (pressedKey.Key == ConsoleKey.D1 || pressedKey.Key == ConsoleKey.D2 || pressedKey.Key == ConsoleKey.D3 || pressedKey.Key == ConsoleKey.D4 || pressedKey.Key == ConsoleKey.D5 || pressedKey.Key == ConsoleKey.D6)
+                if (pressedKey.Key == ConsoleKey.D1 || pressedKey.Key == ConsoleKey.D2 || pressedKey.Key == ConsoleKey.D3 || pressedKey.Key == ConsoleKey.D4 || pressedKey.Key == ConsoleKey.D5 || pressedKey.Key == ConsoleKey.D6 || pressedKey.Key == ConsoleKey.D7)
                 {
                     button = pressedKey;
                     PrintAdjust(button.KeyChar - 48);
@@ -74,7 +74,12 @@ namespace MyPlaylists.AccountOptions
                 AddTagsToPlaylist addTagsToPlaylist = new AddTagsToPlaylist();
                 addTagsToPlaylist.AddTag(playlistId);
             }
-            else if( button.Key == ConsoleKey.D6)
+            else if(button.Key == ConsoleKey.D6)
+            {
+                RemoveTagFromPlaylist remove = new RemoveTagFromPlaylist();
+                remove.RemoveTag(playlistId);
+            }
+            else if( button.Key == ConsoleKey.D7)
             {
                 AccountMenu am = new AccountMenu();
                 am.Menu(AccId);
@@ -113,34 +118,39 @@ namespace MyPlaylists.AccountOptions
             string optionThree = "3) Print songs";
             string optionFour = "4) Filter genre";
             string optionFive = "5) Add tag to Playlist";
-            string optionSix = "6) <--- Back";
+            string optionSix = "6) Remove tag";
+            string optionSeven = "7) <--- Back";
 
             var defaultColor = ConsoleColor.Gray;
             var selectedColor = ConsoleColor.Cyan;
 
             Console.ForegroundColor = button == 1 ? selectedColor : defaultColor;
-            CenterTextMethod.CenterText(optionOne, 8, 1);
+            CenterTextMethod.CenterText(optionOne, 9, 1);
             Console.WriteLine(optionOne);
 
             Console.ForegroundColor = button == 2 ? selectedColor : defaultColor;
-            CenterTextMethod.CenterText(optionOne, 8, 2);
+            CenterTextMethod.CenterText(optionOne, 9, 2);
             Console.WriteLine(optionTwo);
 
             Console.ForegroundColor = button == 3 ? selectedColor : defaultColor;
-            CenterTextMethod.CenterText(optionOne, 8, 3);
+            CenterTextMethod.CenterText(optionOne, 9, 3);
             Console.WriteLine(optionThree);
 
             Console.ForegroundColor = button == 4 ? selectedColor : defaultColor;
-            CenterTextMethod.CenterText(optionOne, 8, 4);
+            CenterTextMethod.CenterText(optionOne, 9, 4);
             Console.WriteLine(optionFour);
 
             Console.ForegroundColor = button == 5 ? selectedColor : defaultColor;
-            CenterTextMethod.CenterText(optionOne, 8, 5);
+            CenterTextMethod.CenterText(optionOne, 9, 5);
             Console.WriteLine(optionFive);
 
             Console.ForegroundColor = button == 6 ? selectedColor : defaultColor;
-            CenterTextMethod.CenterText(optionOne, 8, 6);
+            CenterTextMethod.CenterText(optionOne, 9, 6);
             Console.WriteLine(optionSix);
+
+            Console.ForegroundColor = button == 7 ? selectedColor : defaultColor;
+            CenterTextMethod.CenterText(optionOne, 9, 7);
+            Console.WriteLine(optionSeven);
 
             Console.ForegroundColor = defaultColor;
         }

@@ -20,8 +20,7 @@ while (true)
         Console.WriteLine(ex.Message);
         Thread.Sleep(2000);
         Console.ForegroundColor = ConsoleColor.Gray;
-        //MainMenu menu2 = new MainMenu();
-        //menu2.Menu();
+        
     }
 }
 
